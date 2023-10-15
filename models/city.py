@@ -1,20 +1,12 @@
+#!/usr/bin/python3
 from models.base_model import BaseModel
 
+
 class City(BaseModel):
-    """
-    City class that inherits from BaseModel.
-    
-    Public attributes:
-    - state_id: string, empty string, refers to the State.id
-    - name: string, empty string
-    """
+    """City class that inherits from BaseModel."""
+    state_id = ""
+    name = ""
 
     def __init__(self, *args, **kwargs):
-        """
-        Initializes City instance.
-        
-        Args:
-            args: Not used.
-            kwargs: Keyword arguments.
-        """
+        """Initialize City instance."""
         super().__init__(*args, **kwargs)

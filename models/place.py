@@ -1,23 +1,9 @@
+#!/usr/bin/python3
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """
-    Place class with various attributes.
-
-    Public attributes:
-        city_id: string - empty string: it will be the City.id
-        user_id: string - empty string: it will be the User.id
-        name: string - empty string
-        description: string - empty string
-        number_rooms: integer - 0
-        number_bathrooms: integer - 0
-        max_guest: integer - 0
-        price_by_night: integer - 0
-        latitude: float - 0.0
-        longitude: float - 0.0
-        amenity_ids: list of string - empty list
-    """
+    """Place class that inherits from BaseModel."""
     city_id = ""
     user_id = ""
     name = ""
@@ -31,11 +17,5 @@ class Place(BaseModel):
     amenity_ids = []
 
     def __init__(self, *args, **kwargs):
-        """
-        Initializes attributes.
-
-        Args:
-            args: Not used
-            kwargs: A dictionary to hold keyword arguments.
-        """
+        """Initialize Place instance."""
         super().__init__(*args, **kwargs)

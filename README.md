@@ -1,5 +1,8 @@
 # AirBnB Clone - The Console
+----
+![HBnB Logo](https://github.com/Cank256/AirBnB_clone/blob/main/assets/images/hbnb.png)
 
+----
 This is a group project focused on building a command-line console for managing AirBnB objects. The project is developed in Python, utilizing object-oriented programming (OOP) principles. The project is to be completed by a team consisting of Guillaume, Graham Olusiekwin, and Caleb Nkunze. The project's timeline spans from October 9, 2023, 6:00 AM, to October 16, 2023, 6:00 AM, with the checker being released on October 14, 2023, 12:00 PM. Manual quality assurance (QA) review is mandatory upon project completion, and an auto review will be launched at the deadline.
 
 ## Concepts
