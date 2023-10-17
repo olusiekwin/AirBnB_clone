@@ -1,9 +1,14 @@
 #!/usr/bin/python3
+'''
+Module Docs:
+'''
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Place class that inherits from BaseModel."""
+    '''
+    Class Docs
+    '''
     city_id = ""
     user_id = ""
     name = ""
@@ -15,7 +20,3 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = []
-
-    def __init__(self, *args, **kwargs):
-        """Initialize Place instance."""
-        super().__init__(*args, **kwargs)
