@@ -1,11 +1,13 @@
 #!/usr/bin/python3
+'''
+Module Docs:
+'''
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """State class that inherits from BaseModel."""
-    name = ""
+    '''
+    Class Docs
+    '''
 
-    def __init__(self, *args, **kwargs):
-        """Initialize State instance."""
-        super().__init__(*args, **kwargs)
+    name = ""
