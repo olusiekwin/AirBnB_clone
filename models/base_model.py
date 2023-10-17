@@ -1,52 +1,59 @@
 #!/usr/bin/python3
-import uuid
+'''
+Module Docs:
+'''
 from datetime import datetime
-from models.engine.file_storage import FileStorage
+import uuid
+import models
 
 
 class BaseModel:
-    def __init__(self, *args, **kwargs):
-        """
-        Initialize BaseModel instance with unique id and timestamps.
+    '''
+    Class Docs
+    '''
 
-        Args:
-            *args: Unused.
-            **kwargs: A dictionary containing attribute names and values.
-        """
+    def __init__(self, *args, **kwargs):
+        '''
+        Docs
+        '''
         if kwargs:
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
-                    setattr(self, key, datetime.strptime(
-                        value, '%Y-%m-%dT%H:%M:%S.%f')
-                        )
-                elif key != '__class__':
-                    setattr(self, key, value)
+                if key == 'created_at':
+                    value = datetime.fromisoformat(value)
+                    self.created_at = value
+                elif key == 'updated_at':
+                    value = datetime.fromisoformat(value)
+                    self.updated_at = value
+                elif key == 'id':
+                    self.id = str(value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            models_here = self
-            FileStorage.new(self, models_here)
-
-    def __str__(self):
-        """
-        Return a string representation of the object.
-        """
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+            self.updated_at = self.created_at
+            models.storage.new(self)
 
     def save(self):
-        """
-        Update the `updated_at` attribute with the current datetime.
-        """
+        '''
+        Docs
+        '''
         self.updated_at = datetime.now()
-        FileStorage.save(self)
+        models.storage.save()
 
     def to_dict(self):
-        """
-        Return a dictionary representation of the object.
-        """
-        obj_dict = self.__dict__.copy()
-        obj_dict['__class__'] = self.__class__.__name__
-        obj_dict['created_at'] = self.created_at.isoformat()
-        obj_dict['updated_at'] = self.updated_at.isoformat()
-        return obj_dict
+        '''
+        Docs
+        '''
+        dictionary = self.__dict__.copy()
+        dictionary["__class__"] = type(self).__name__
+        dictionary["created_at"] = self.created_at.isoformat()
+        dictionary["updated_at"] = self.updated_at.isoformat()
+
+        return dictionary
+
+    def __str__(self):
+        '''
+        Docs
+        '''
+        class_name = type(self).__name__
+
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
